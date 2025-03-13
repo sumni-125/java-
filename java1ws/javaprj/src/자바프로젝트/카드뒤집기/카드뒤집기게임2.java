@@ -16,7 +16,7 @@ public class 카드뒤집기게임2 {
 			int x1, y1, x2, y2;
 
 			game.printBoard();
-			System.out.println("사용자.. 차례??? ");
+			System.out.println("사용자 차례");
 			while (true) {
 				System.out.println("뒤집을 카드를 두장 선택하세요 (1,1 ~ 4,4)");
 
@@ -61,7 +61,7 @@ public class 카드뒤집기게임2 {
 				}
 			}
 			if (!game.isGameOver()) {
-				System.out.println("컴퓨터... 차례??? "); // 뭐라고해야하지 컴퓨터 턴??
+				System.out.println("컴퓨터의 차례입니다."); // 뭐라고해야하지 컴퓨터 턴??
 				while (true) {
 
 					do {

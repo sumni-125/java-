@@ -1,0 +1,94 @@
+로그인
+
+UserFileWriter : txt파일에 객체 저장
+UserFileReader : txt파일 읽어옴
+User : 객체를 바이너리 형태로 바꾸기위한 클래스
+Login :
+=========================================
+
+UserFileWriter :
+
+****
+main 함수: List 배열(users)에 User타입 객체 저장
+saveUsers(users) : List 배열인 users를 매개변수로 메서드를 불러옴
+
+****
+
+saveUsers(List<User> users) : 
+
+ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("res/user.txt"))
+
+ObjectOutputStream : 객체를 바이트 형태로 변경???? 해줌
+FileOutputStream : 파일을 작성하기 위해 열어줌( 파일이 없으면 생성, 있으면 덮어씀)
+
+>> 객체를 파일에 바이트 형태로 저장하기 위해 ObjectOutputStream 타입의.. ...변수?? 뭐야 이름???? 
+oos라는 이름의 ObjectOutputStream 객체를 새로 생성함
+
+oos.writeObject(users) : user.txt파일에 users에 저장된 객체들 바이너리 형태로 저장함
+
+=========================================
+
+UserFileReader : 
+
+****
+main 함수 :
+
+****
+loadUsers() : 
+
+ObjectInputStream ois = new ObjectInputStream(new FileInputStream("res/user.txt"))
+
+ObjectInputStream :  파일에 있는 ( 바이너리 형태 )객체 데이터를 읽고 원래 객체로 복원
+FileInputStream : 
+파일을 읽기 모드로 열어줌
+파일 존재하지 않으면 FileNotFoundException 발생 >> try-catch 형태로 예외처리 함
+
+>> 파일에 바이너리 형태로 저장된 객체를 읽어와서 복원함
+
+예외 발생이 없을시( 파일이 존재하면?? )? 
+ois.readObject()( 파일에서 읽어온 객체 )를 List<User> 타입으로 다운캐스팅하여 반환함
+
+>>여기서 다운캐스팅 하는 이유: 
+ois.readObject()의 반환타입이 Object형이고 loadUsers()에서 반환해야 할 타입은 List<User>형이기 떄문에
+원래의 타입인 List<User> 타입으로 다운캐스팅 함
+
+=========================================
+
+User :
+
+Serializable 인터페이스를 상속받고있음
+
+Serializable : 객체 직렬화를 위한 인터페이스임
+객체 직렬화란? 객체를 바이트 형태로 변경하는것 ( 파일에 저장하기 위함 )
+
+String id : 사용자 아이디 저장하는 변수
+String pwd : 사용자 패스워드 저장하는 변수
+int coin : 사용자 코인 갯수 저장하는 변수
+
+=========================================
+
+Login : 
+
+****
+login() : 
+
+아이디, 비밀번호를 입력받음
+
+UserAuthenticator(id, pwd) -> 아래에 설명
+
+파일에 존재하면 해당 아이디의  coin 갯수를 반환함
+파일에 존재하지 않는 아이디, 비밀번호면 
+다시 입력하라는 메시지 출력 후 다시 아이디, 비밀번호 입력받기
+
+로그인 성공시까지 반복
+
+****
+UserAuthenticator(String id, String password) : 로그인 유효성 체크
+
+반복문으로 users에서 매개변수로 받은 id, password 일치하는지 찾기.
+일치하는 객체가 있으면 반환
+없으면 null값 반환 
+
+
+
+.

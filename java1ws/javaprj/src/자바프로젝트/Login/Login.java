@@ -15,12 +15,12 @@ public class Login {
 			System.out.println("비밀번호를 입력하세요");
 			String pwd = sc.nextLine();
 
-			User target =UserAuthenticator(id, pwd);
-			if(   target!= null) { 
-				
+			User target = UserAuthenticator(id, pwd);
+			if (target != null) {
+
 				return target.coin;
 			}
-			
+
 			System.out.println("아이디 혹은 비밀번호를 잘못 입력했습니다. 다시 입력하세요");
 		}
 
